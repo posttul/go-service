@@ -22,17 +22,17 @@ func (cs *ClientService) GetRoutes() service.Routes {
 		Handler: func(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 			resp, err := http.Get("http://localhost:3000/")
 			if err != nil {
-				service.Respose{Err: err}.Error(w)
+				service.Error(w, &service.R{Error: err}, service.JSON)
 				return
 			}
 			defer resp.Body.Close()
 			lots := struct{ Data []storage.Lot }{}
 			err = json.NewDecoder(resp.Body).Decode(&lots)
 			if err != nil {
-				service.Respose{Err: err}.Error(w)
+				service.Error(w, &service.R{Error: err}, service.JSON)
 				return
 			}
-			service.Respose{Data: lots.Data}.OK(w)
+			service.OK(w, &service.R{Data: lots.Data}, service.JSON)
 		},
 	}}
 }

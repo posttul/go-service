@@ -30,11 +30,11 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:8c400982e96095aadb03683e344bfb0d9bd37a985d4aab8e704cdd240d485aab"
+  digest = "1:a68d56a81058c205ad6f73e7b9d5a76e2f94a2dc4957bf994e475ed23e6d7809"
   name = "github.com/posttul/service"
   packages = ["."]
   pruneopts = "UT"
-  revision = "eda0c893cbf4a76af71074987203806536b92ccb"
+  revision = "354a08778fa5280c6228a189e36c353ad3b06929"
 
 [[projects]]
   digest = "1:3f53e9e4dfbb664cd62940c9c4b65a2171c66acd0b7621a1a6b8e78513525a52"

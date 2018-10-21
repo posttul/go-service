@@ -29,7 +29,7 @@ func main() {
 
 	service.Start(
 		c.Service.Address,
-		LotService{
+		&LotService{
 			storage: sto,
 		})
 }

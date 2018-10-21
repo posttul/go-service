@@ -2,9 +2,8 @@ package postgres
 
 import (
 	"database/sql"
-	"fmt"
+	"fmt" // Handle postgres stuff
 
-	// Handle postgres stuff
 	_ "github.com/lib/pq"
 	"github.com/posttul/lot-service/storage"
 )
@@ -32,7 +31,7 @@ func New(user, password, dbName, host string) (storage.Service, error) {
 
 // GetLots returns all lots
 func (p *postgres) GetLots() ([]storage.Lot, error) {
-	st, err := p.db.Query("SELECT name,address FROM lot;")
+	st, err := p.db.Query("SELECT id,name,address FROM lot;")
 	if err != nil {
 		return nil, err
 	}
@@ -40,6 +39,7 @@ func (p *postgres) GetLots() ([]storage.Lot, error) {
 	for st.Next() {
 		lot := storage.Lot{}
 		if err := st.Scan(
+			&lot.ID,
 			&lot.Name,
 			&lot.Address); err != nil {
 			return nil, err
@@ -47,4 +47,18 @@ func (p *postgres) GetLots() ([]storage.Lot, error) {
 		lots = append(lots, lot)
 	}
 	return lots, nil
+}
+
+// GetLots returns all lots
+func (p *postgres) GetLotByID(id int64) (*storage.Lot, error) {
+	lot := storage.Lot{}
+	err := p.db.QueryRow("SELECT id,name,address FROM lot WHERE id=$1;", id).
+		Scan(
+			&lot.ID,
+			&lot.Name,
+			&lot.Address)
+	if err != nil {
+		return nil, err
+	}
+	return &lot, nil
 }
