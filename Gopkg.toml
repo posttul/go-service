@@ -25,10 +25,26 @@
 #   unused-packages = true
 
 
-[prune]
-  go-tests = true
-  unused-packages = true
-
 [[constraint]]
   name = "github.com/julienschmidt/httprouter"
   version = "1.2.0"
+
+[[constraint]]
+  name = "github.com/lib/pq"
+  version = "1.0.0"
+
+[[constraint]]
+  branch = "master"
+  name = "github.com/posttul/service"
+
+[[constraint]]
+  name = "github.com/sirupsen/logrus"
+  version = "1.1.1"
+
+[[constraint]]
+  name = "gopkg.in/yaml.v2"
+  version = "2.2.1"
+
+[prune]
+  go-tests = true
+  unused-packages = true

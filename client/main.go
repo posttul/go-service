@@ -4,10 +4,9 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"bitbucket.org/housing/lot/storage"
-
-	"bitbucket.org/housing/lot/service"
 	"github.com/julienschmidt/httprouter"
+	"github.com/posttul/lot-service/storage"
+	"github.com/posttul/service"
 	"github.com/sirupsen/logrus"
 )
 
