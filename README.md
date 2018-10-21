@@ -1,2 +1,3 @@
-# service
-This is just a service builder on go 
+# Lot Service
+
+This is just a prove of concep for the [service](https://github.com/posttu/service) pkg.
