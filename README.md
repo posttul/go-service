@@ -1,3 +1,3 @@
 # Lot Service
 
-This is just a prove of concep for the [service](https://github.com/posttu/service) pkg.
+This is just a prove of concept for the [service](https://github.com/posttul/service) pkg.
