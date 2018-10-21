@@ -3,10 +3,9 @@ package main
 import (
 	"os"
 
+	"github.com/posttul/lot-service/storage/postgres"
+	"github.com/posttul/service"
 	"github.com/sirupsen/logrus"
-
-	"bitbucket.org/housing/lot/service"
-	"bitbucket.org/housing/lot/storage/postgres"
 )
 
 var log = logrus.New()

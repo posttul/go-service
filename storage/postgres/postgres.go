@@ -6,8 +6,7 @@ import (
 
 	// Handle postgres stuff
 	_ "github.com/lib/pq"
-
-	"bitbucket.org/housing/lot/storage"
+	"github.com/posttul/lot-service/storage"
 )
 
 // Postgres is use to storage data to postgres

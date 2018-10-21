@@ -4,13 +4,12 @@ import (
 	"io/ioutil"
 	"net/http"
 
+	"github.com/posttul/lot-service/storage"
+	"github.com/posttul/service"
 	"github.com/sirupsen/logrus"
 
 	"github.com/julienschmidt/httprouter"
 	yaml "gopkg.in/yaml.v2"
-
-	"bitbucket.org/housing/lot/service"
-	"bitbucket.org/housing/lot/storage"
 )
 
 type routes = service.Routes
