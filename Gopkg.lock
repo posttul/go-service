@@ -2,62 +2,84 @@
 
 
 [[projects]]
+  digest = "1:f97285a3b0a496dcf8801072622230d513f69175665d94de60eb042d03387f6c"
   name = "github.com/julienschmidt/httprouter"
   packages = ["."]
+  pruneopts = "UT"
   revision = "348b672cd90d8190f8240323e372ecd1e66b59dc"
   version = "v1.2.0"
 
 [[projects]]
+  digest = "1:0a69a1c0db3591fcefb47f115b224592c8dfa4368b7ba9fae509d5e16cdc95c8"
   name = "github.com/konsorten/go-windows-terminal-sequences"
   packages = ["."]
+  pruneopts = "UT"
   revision = "5c8c8bd35d3832f5d134ae1e1e375b69a4d25242"
   version = "v1.0.1"
 
 [[projects]]
+  digest = "1:8ef506fc2bb9ced9b151dafa592d4046063d744c646c1bbe801982ce87e4bc24"
   name = "github.com/lib/pq"
   packages = [
     ".",
-    "oid"
+    "oid",
   ]
+  pruneopts = "UT"
   revision = "4ded0e9383f75c197b3a2aaa6d590ac52df6fd79"
   version = "v1.0.0"
 
 [[projects]]
   branch = "master"
+  digest = "1:8c400982e96095aadb03683e344bfb0d9bd37a985d4aab8e704cdd240d485aab"
   name = "github.com/posttul/service"
   packages = ["."]
-  revision = "bed5bea25130148a0e58438b4538b2739efc8a7b"
+  pruneopts = "UT"
+  revision = "eda0c893cbf4a76af71074987203806536b92ccb"
 
 [[projects]]
+  digest = "1:3f53e9e4dfbb664cd62940c9c4b65a2171c66acd0b7621a1a6b8e78513525a52"
   name = "github.com/sirupsen/logrus"
   packages = ["."]
+  pruneopts = "UT"
   revision = "ad15b42461921f1fb3529b058c6786c6a45d5162"
   version = "v1.1.1"
 
 [[projects]]
   branch = "master"
+  digest = "1:3f3a05ae0b95893d90b9b3b5afdb79a9b3d96e4e36e099d841ae602e4aca0da8"
   name = "golang.org/x/crypto"
   packages = ["ssh/terminal"]
+  pruneopts = "UT"
   revision = "0c41d7ab0a0ee717d4590a44bcb987dfd9e183eb"
 
 [[projects]]
   branch = "master"
+  digest = "1:56e0fb6e56fa651d9183abd2db5f29d05da203a7c50bf9b331259e5087aca683"
   name = "golang.org/x/sys"
   packages = [
     "unix",
-    "windows"
+    "windows",
   ]
+  pruneopts = "UT"
   revision = "8e24a49d80f82323e1c4db1b5da3e0f31171a151"
 
 [[projects]]
+  digest = "1:342378ac4dcb378a5448dd723f0784ae519383532f5e70ade24132c4c8693202"
   name = "gopkg.in/yaml.v2"
   packages = ["."]
+  pruneopts = "UT"
   revision = "5420a8b6744d3b0345ab293f6fcba19c978f1183"
   version = "v2.2.1"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "939e6d4c54a63abcf1aded1392c83e7ebeacdf8e7ec50614d0616772ad8ade00"
+  input-imports = [
+    "github.com/julienschmidt/httprouter",
+    "github.com/lib/pq",
+    "github.com/posttul/service",
+    "github.com/sirupsen/logrus",
+    "gopkg.in/yaml.v2",
+  ]
   solver-name = "gps-cdcl"
   solver-version = 1

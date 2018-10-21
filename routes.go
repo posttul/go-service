@@ -1,18 +1,27 @@
 package main
 
 import (
+	"io"
 	"io/ioutil"
 	"net/http"
 
+	"github.com/julienschmidt/httprouter"
 	"github.com/posttul/lot-service/storage"
 	"github.com/posttul/service"
 	"github.com/sirupsen/logrus"
-
-	"github.com/julienschmidt/httprouter"
 	yaml "gopkg.in/yaml.v2"
 )
 
 type routes = service.Routes
+type response struct {
+	Status string
+	Data   interface{}
+	Error  error `yaml:"err,omitempty" json:"error,omitempty"`
+}
+
+func (r *response) SetStatus(status string) {
+	r.Status = status
+}
 
 // Config is the service configuration
 type Config struct {
@@ -53,15 +62,32 @@ func (s LotService) GetRoutes() routes {
 	return s.routes
 }
 
+// YAML is a service.Writer to yaml
+func YAML(w io.Writer, r service.Response) {
+	b, err := yaml.Marshal(r)
+	if err != nil {
+		service.Error(w, &response{Error: err}, service.JSON)
+		return
+	}
+	io.WriteString(w, string(b))
+}
+
 // GetLot returns all lots on the storage
 func (s *LotService) GetLot() httprouter.Handle {
 	return func(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 		// Retrive lots
 		lots, err := s.storage.GetLots()
 		if err != nil {
-			service.Respose{Err: err}.Error(w)
+			service.Error(w, &response{Error: err}, service.JSON)
 			return
 		}
-		service.Respose{Data: lots}.OK(w)
+		var outParser service.Writer
+		switch r.URL.Query().Get("type") {
+		case "yaml":
+			outParser = YAML
+		default:
+			outParser = service.JSON
+		}
+		service.OK(w, &response{Data: lots}, outParser)
 	}
 }
