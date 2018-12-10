@@ -3,6 +3,6 @@ service:
   log: 5
 db:
   user: "postgres"
-  password: ""
+  password: "passwordseguro"
   dbname: "lotes"
-  host: "127.0.0.1"
+  host: "db"

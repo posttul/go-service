@@ -14,13 +14,18 @@ import (
 type ClientService struct {
 }
 
+// InitRouter just retunrs the router
+func (cs *ClientService) InitRouter(r *httprouter.Router) *httprouter.Router {
+	return r
+}
+
 // GetRoutes gets client routes
 func (cs *ClientService) GetRoutes() service.Routes {
 	return service.Routes{"home": {
 		Method: http.MethodGet,
 		Path:   "/",
 		Handler: func(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
-			resp, err := http.Get("http://localhost:3000/")
+			resp, err := http.Get("http://localhost:3000/lot")
 			if err != nil {
 				service.Error(w, &service.R{Error: err}, service.JSON)
 				return

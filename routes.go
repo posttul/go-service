@@ -94,6 +94,7 @@ func YAML(w io.Writer, r service.Response) {
 	io.WriteString(w, string(b))
 }
 
+// GetAllLots returns all the lots from the storage.
 func (s *LotService) GetAllLots() httprouter.Handle {
 	return func(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 		lots, err := s.storage.GetLots()

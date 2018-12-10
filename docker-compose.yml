@@ -1,0 +1,19 @@
+version: '3.6'
+
+services:
+  app:
+    build: .
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
+
+  db:
+    image: postgres:9.4
+    restart: always
+    volumes:
+      - ./_scripts/init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      POSTGRES_PASSWORD: passwordseguro
+      POSTGRES_DB: lotes
